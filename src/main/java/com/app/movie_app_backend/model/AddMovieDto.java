@@ -1,7 +1,5 @@
 package com.app.movie_app_backend.model;
 
-
-import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -9,21 +7,14 @@ import lombok.NoArgsConstructor;
 
 import java.util.List;
 
-@Entity
-@Data
 @Builder
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
+public class AddMovieDto {
 
-public class Movie {
-
-    @Id
-    private Long id;
-
-    private String name;
-
-    @ManyToMany(mappedBy = "movies")
-    private List<UserList> userLists;
-
+    public Long userId;
+    public Long movieId;
+    public List<String>lists;
 
 }

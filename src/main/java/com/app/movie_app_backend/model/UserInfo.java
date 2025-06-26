@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.w3c.dom.stylesheets.LinkStyle;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -22,8 +23,8 @@ public class UserInfo {
     private String email;
     private String password;
 
-    @OneToMany(mappedBy = "userId")
-    private List<UserList> userLists;
+    @OneToMany(mappedBy = "userInfo", fetch = FetchType.EAGER)//
+    private List<UserList> lists = new ArrayList<>();
 
 
     private String RefreshTOken;

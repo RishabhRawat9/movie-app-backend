@@ -6,6 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity //for each list we need an id,createdAt, moviesStored(list of movies),userId(fk), title
@@ -15,16 +16,14 @@ import java.util.List;
 @NoArgsConstructor
 public class UserList {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
     private String name;
 
     private String description;
 
     @ManyToOne
-    @JoinColumn(name = "userId")
-    private UserInfo userId;
+    @JoinColumn(name = "user_id")//is col ka name user_id hoga. & userlist table side pe hi show hoga ye.
+    private UserInfo userInfo;
+
 
     @ManyToMany()
     @JoinTable(
@@ -32,7 +31,7 @@ public class UserList {
             joinColumns = @JoinColumn(name = "userlist_id"),
             inverseJoinColumns = @JoinColumn(name = "movie_id")
     )
-    private List<Movie> movies;
+    private List<Movie> movies =new ArrayList<>();
 
 
 }
